@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
 		726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */; };
-		726FDD382C6D27EA004A11AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD372C6D27EA004A11AC /* ContentView.swift */; };
+		726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD372C6D27EA004A11AC /* ProductScreen.swift */; };
 		726FDD3A2C6D27EB004A11AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726FDD392C6D27EB004A11AC /* Assets.xcassets */; };
 		726FDD3D2C6D27EB004A11AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726FDD3C2C6D27EB004A11AC /* Preview Assets.xcassets */; };
+		726FDD462C6D284C004A11AC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD452C6D284C004A11AC /* Product.swift */; };
+		726FDD482C6D2D5A004A11AC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD472C6D2D5A004A11AC /* Client.swift */; };
+		726FDD4C2C6D2F32004A11AC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD4B2C6D2F32004A11AC /* Transaction.swift */; };
+		726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD4E2C6E04D0004A11AC /* addProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		726FDD322C6D27EA004A11AC /* Inventory Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementApp.swift; sourceTree = "<group>"; };
-		726FDD372C6D27EA004A11AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		726FDD372C6D27EA004A11AC /* ProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreen.swift; sourceTree = "<group>"; };
 		726FDD392C6D27EB004A11AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		726FDD3C2C6D27EB004A11AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		726FDD452C6D284C004A11AC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		726FDD472C6D2D5A004A11AC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		726FDD4B2C6D2F32004A11AC /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		726FDD4E2C6E04D0004A11AC /* addProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,10 @@
 		726FDD342C6D27EA004A11AC /* Inventory Management */ = {
 			isa = PBXGroup;
 			children = (
+				726FDD4D2C6E04BA004A11AC /* Views */,
+				726FDD442C6D2832004A11AC /* Models */,
+				726FDD432C6D281F004A11AC /* Screens */,
 				726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */,
-				726FDD372C6D27EA004A11AC /* ContentView.swift */,
 				726FDD392C6D27EB004A11AC /* Assets.xcassets */,
 				726FDD3B2C6D27EB004A11AC /* Preview Content */,
 			);
@@ -65,6 +77,33 @@
 				726FDD3C2C6D27EB004A11AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		726FDD432C6D281F004A11AC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				726FDD372C6D27EA004A11AC /* ProductScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		726FDD442C6D2832004A11AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				726FDD452C6D284C004A11AC /* Product.swift */,
+				726FDD472C6D2D5A004A11AC /* Client.swift */,
+				726FDD4B2C6D2F32004A11AC /* Transaction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		726FDD4D2C6E04BA004A11AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				726FDD4E2C6E04D0004A11AC /* addProduct.swift */,
+				725704492C6E7EA10012E89D /* accessCameraView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				726FDD382C6D27EA004A11AC /* ContentView.swift in Sources */,
+				726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */,
+				726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */,
+				726FDD4C2C6D2F32004A11AC /* Transaction.swift in Sources */,
+				726FDD482C6D2D5A004A11AC /* Client.swift in Sources */,
 				726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */,
+				726FDD462C6D284C004A11AC /* Product.swift in Sources */,
+				7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +319,7 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +349,7 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
