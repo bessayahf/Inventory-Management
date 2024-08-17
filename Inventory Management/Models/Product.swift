@@ -15,8 +15,9 @@ class Product {
     var code : String
     var image : Data?
     var quantity : Int
-    var salePrice : Int
-    var purchasePrice : Int
+    var minquantity : Int = 0
+    var salePrice : Double
+    var purchasePrice : Double
     var internalRef : String
     var brand : String
     var model : String
@@ -25,8 +26,8 @@ class Product {
     var customField1 : String
     var customField2 : String
     
-    init(name: String = "", code: String = "", image: Data? = nil, quantity: Int = 0, 
-         salePrice: Int  = 0, supplierPrice: Int = 0,
+    init(name: String = "", code: String = "", image: Data? = nil, quantity: Int = 0,
+         salePrice: Double  = 0, purchasePrice: Double = 0,
          internalRef: String  = "", brand: String  = "", model: String  = "", assignement: String  = "", notes: String  = "",
          customField1: String  = "", customField2: String  = "") {
         self.uuid = UUID().uuidString
@@ -35,7 +36,7 @@ class Product {
         self.image = image
         self.quantity = quantity
         self.salePrice = salePrice
-        self.purchasePrice = supplierPrice
+        self.purchasePrice = purchasePrice
         self.internalRef = internalRef
         self.brand = brand
         self.model = model

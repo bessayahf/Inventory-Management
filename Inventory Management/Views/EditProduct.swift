@@ -1,15 +1,15 @@
 //
-//  addProduct.swift
+//  EditProduct.swift
 //  Inventory Management
 //
-//  Created by Faycal Bessayah on 15/08/2024.
+//  Created by Faycal Bessayah on 16/08/2024.
 //
 
 import SwiftUI
 import PhotosUI
 import CodeScanner
 
-struct addProduct: View {
+struct EditProduct: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
@@ -17,24 +17,16 @@ struct addProduct: View {
     @State private var selectedImage: UIImage?
     @State private var selectImageSource : Bool = false
     @State private var selectedPhoto : PhotosPickerItem?
-    @State private var selectedPhotoData  : Data?
-    @State private var newproduct = Product ()
     @State private var isShowingScanner = false
 
+    @Bindable var newproduct : Product
     var body: some View {
         NavigationStack{
             List{
                 
-//                Section{
-//                    Button(action: {
-//                        selectImageSource.toggle()
-//                    }, label: {
-//                        Label("Add Image", systemImage: "photo")
-//                    })
-//                }
                 Section{
-                    if let selectedPhotoData,
-                       let uiImage =  UIImage(data: selectedPhotoData){
+                    if let photodata = newproduct.image,
+                       let uiImage =  UIImage(data: photodata){
                         Image(uiImage:uiImage)
                             .resizable()
                             .scaledToFit()
@@ -71,6 +63,7 @@ struct addProduct: View {
                         TextField("Code", text: $newproduct.code)
                         Button{
                             isShowingScanner.toggle()
+                            
                         }
                     label: {
                         Image(systemName: "barcode.viewfinder")
@@ -83,7 +76,7 @@ struct addProduct: View {
                     .bold()
             }
                 Section{
-                        TextField("", value: $newproduct.quantity, format: .number)
+                    TextField("", value: $newproduct.quantity, format: .number)
                     
                 }
                 header: {
@@ -91,9 +84,8 @@ struct addProduct: View {
                         .font(.subheadline)
                         .bold()
                 }
-           
                 Section{
-                    TextField(" ", value: $newproduct.purchasePrice, format: .number)
+                    TextField("", value: $newproduct.purchasePrice, format: .number)
                         .keyboardType(.decimalPad)
 
                 }
@@ -116,7 +108,6 @@ struct addProduct: View {
                 
                     
                 Section{
-
                     HStack{
                         Text("Min Quantity:")
                             .foregroundStyle(Color.gray)
@@ -161,6 +152,10 @@ struct addProduct: View {
                     }
                    
                     
+                    
+                    
+                    
+                    
                 }
             header:{
                 Text("Other Fields")
@@ -169,20 +164,13 @@ struct addProduct: View {
             }
                 
             }
-            .navigationTitle("New Product")
+            .navigationTitle("Edit Product")
             .toolbar{
-                ToolbarItem(placement: .topBarLeading){
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                    }
-                  
-                }
+
                 
                 ToolbarItem(placement: .topBarTrailing){
                     Button(action: {
-                        newproduct.image = selectedPhotoData
+//                        newproduct.image = selectedPhotoData
                         modelContext.insert(newproduct)
                         dismiss()
                     }, label: {
@@ -216,7 +204,7 @@ struct addProduct: View {
                                         
                                            Task {
                                                if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-                                                   selectedPhotoData = data
+                                                   newproduct.image = data
                                                }
                                            }
                                         selectImageSource.toggle()
@@ -231,14 +219,14 @@ struct addProduct: View {
                         Text("Open Camera")
                         }
                         .fullScreenCover(isPresented: $showCamera) {
-                                accessCameraView(selectedImage: $selectedPhotoData)
+                            accessCameraView(selectedImage: $newproduct.image)
                                 .onDisappear(){
                                     selectImageSource.toggle()
                                 }
                             
                             }
                         Button{
-                            selectedPhotoData = nil
+                            newproduct.image = nil
                             selectImageSource.toggle()
                         }
                         label: {
@@ -251,5 +239,6 @@ struct addProduct: View {
             })
         }
     }
+    
 }
 

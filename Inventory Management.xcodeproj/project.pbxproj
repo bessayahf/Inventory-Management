@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
+		7257044C2C6F81080012E89D /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257044B2C6F81080012E89D /* EditProduct.swift */; };
+		7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7257044E2C6FBCE80012E89D /* CodeScanner */; };
 		726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */; };
 		726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD372C6D27EA004A11AC /* ProductScreen.swift */; };
 		726FDD3A2C6D27EB004A11AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726FDD392C6D27EB004A11AC /* Assets.xcassets */; };
@@ -20,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
+		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
 		726FDD322C6D27EA004A11AC /* Inventory Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementApp.swift; sourceTree = "<group>"; };
 		726FDD372C6D27EA004A11AC /* ProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreen.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 			children = (
 				726FDD4E2C6E04D0004A11AC /* addProduct.swift */,
 				725704492C6E7EA10012E89D /* accessCameraView.swift */,
+				7257044B2C6F81080012E89D /* EditProduct.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +127,9 @@
 			dependencies = (
 			);
 			name = "Inventory Management";
+			packageProductDependencies = (
+				7257044E2C6FBCE80012E89D /* CodeScanner */,
+			);
 			productName = "Inventory Management";
 			productReference = 726FDD322C6D27EA004A11AC /* Inventory Management.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +158,9 @@
 				Base,
 			);
 			mainGroup = 726FDD292C6D27EA004A11AC;
+			packageReferences = (
+				7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 726FDD332C6D27EA004A11AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,6 +190,7 @@
 				726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */,
 				726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */,
 				726FDD4C2C6D2F32004A11AC /* Transaction.swift in Sources */,
+				7257044C2C6F81080012E89D /* EditProduct.swift in Sources */,
 				726FDD482C6D2D5A004A11AC /* Client.swift in Sources */,
 				726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */,
 				726FDD462C6D284C004A11AC /* Product.swift in Sources */,
@@ -390,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7257044E2C6FBCE80012E89D /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 726FDD2A2C6D27EA004A11AC /* Project object */;
 }
