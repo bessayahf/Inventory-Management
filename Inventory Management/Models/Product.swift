@@ -11,6 +11,7 @@ import SwiftData
 @Model
 class Product {
     var uuid : String
+    var openingdate : Date = Date.now
     var name : String
     var code : String
     var image : Data?
@@ -25,6 +26,7 @@ class Product {
     var notes : String
     var customField1 : String
     var customField2 : String
+    @Relationship(deleteRule: .noAction) var transactions = [StockTransaction]()
     
     init(name: String = "", code: String = "", image: Data? = nil, quantity: Int = 0,
          salePrice: Double  = 0, purchasePrice: Double = 0,

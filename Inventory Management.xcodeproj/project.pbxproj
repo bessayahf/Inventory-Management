@@ -10,19 +10,23 @@
 		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
 		7257044C2C6F81080012E89D /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257044B2C6F81080012E89D /* EditProduct.swift */; };
 		7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7257044E2C6FBCE80012E89D /* CodeScanner */; };
+		725704512C7126940012E89D /* TransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704502C7126940012E89D /* TransactionScreen.swift */; };
+		725704552C720DBF0012E89D /* addTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704542C720DBF0012E89D /* addTransaction.swift */; };
 		726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */; };
 		726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD372C6D27EA004A11AC /* ProductScreen.swift */; };
 		726FDD3A2C6D27EB004A11AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726FDD392C6D27EB004A11AC /* Assets.xcassets */; };
 		726FDD3D2C6D27EB004A11AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 726FDD3C2C6D27EB004A11AC /* Preview Assets.xcassets */; };
 		726FDD462C6D284C004A11AC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD452C6D284C004A11AC /* Product.swift */; };
 		726FDD482C6D2D5A004A11AC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD472C6D2D5A004A11AC /* Client.swift */; };
-		726FDD4C2C6D2F32004A11AC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD4B2C6D2F32004A11AC /* Transaction.swift */; };
+		726FDD4C2C6D2F32004A11AC /* StockTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD4B2C6D2F32004A11AC /* StockTransaction.swift */; };
 		726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FDD4E2C6E04D0004A11AC /* addProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
+		725704502C7126940012E89D /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
+		725704542C720DBF0012E89D /* addTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTransaction.swift; sourceTree = "<group>"; };
 		726FDD322C6D27EA004A11AC /* Inventory Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		726FDD352C6D27EA004A11AC /* Inventory_ManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementApp.swift; sourceTree = "<group>"; };
 		726FDD372C6D27EA004A11AC /* ProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreen.swift; sourceTree = "<group>"; };
@@ -30,7 +34,7 @@
 		726FDD3C2C6D27EB004A11AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		726FDD452C6D284C004A11AC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		726FDD472C6D2D5A004A11AC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		726FDD4B2C6D2F32004A11AC /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		726FDD4B2C6D2F32004A11AC /* StockTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransaction.swift; sourceTree = "<group>"; };
 		726FDD4E2C6E04D0004A11AC /* addProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				726FDD372C6D27EA004A11AC /* ProductScreen.swift */,
+				725704502C7126940012E89D /* TransactionScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -96,7 +101,7 @@
 			children = (
 				726FDD452C6D284C004A11AC /* Product.swift */,
 				726FDD472C6D2D5A004A11AC /* Client.swift */,
-				726FDD4B2C6D2F32004A11AC /* Transaction.swift */,
+				726FDD4B2C6D2F32004A11AC /* StockTransaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 				726FDD4E2C6E04D0004A11AC /* addProduct.swift */,
 				725704492C6E7EA10012E89D /* accessCameraView.swift */,
 				7257044B2C6F81080012E89D /* EditProduct.swift */,
+				725704542C720DBF0012E89D /* addTransaction.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,8 +195,10 @@
 			files = (
 				726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */,
 				726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */,
-				726FDD4C2C6D2F32004A11AC /* Transaction.swift in Sources */,
+				725704552C720DBF0012E89D /* addTransaction.swift in Sources */,
+				726FDD4C2C6D2F32004A11AC /* StockTransaction.swift in Sources */,
 				7257044C2C6F81080012E89D /* EditProduct.swift in Sources */,
+				725704512C7126940012E89D /* TransactionScreen.swift in Sources */,
 				726FDD482C6D2D5A004A11AC /* Client.swift in Sources */,
 				726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */,
 				726FDD462C6D284C004A11AC /* Product.swift in Sources */,

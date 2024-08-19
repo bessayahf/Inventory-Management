@@ -61,6 +61,7 @@ struct EditProduct: View {
                     TextField("Name", text: $newproduct.name)
                     HStack{
                         TextField("Code", text: $newproduct.code)
+                        
                         Button{
                             isShowingScanner.toggle()
                             
@@ -76,7 +77,21 @@ struct EditProduct: View {
                     .bold()
             }
                 Section{
-                    TextField("", value: $newproduct.quantity, format: .number)
+                   
+                    HStack{
+                        Text("Available:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.quantity, format: .number)
+                            .keyboardType(.numberPad)
+                            
+                    }
+                    HStack{
+                        Text("Min:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.minquantity, format: .number)
+                            .keyboardType(.numberPad)
+                            
+                    }
                     
                 }
                 header: {
@@ -85,36 +100,56 @@ struct EditProduct: View {
                         .bold()
                 }
                 Section{
-                    TextField("", value: $newproduct.purchasePrice, format: .number)
-                        .keyboardType(.decimalPad)
-
+                    
+                    HStack{
+                        Text("Unit Price:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.purchasePrice, format: .number)
+                            .keyboardType(.decimalPad)
+                            
+                    }
+                    HStack{
+                        Text("Total Price:")
+                            .foregroundStyle(Color.gray)
+                        let totalpurchaseprice = String(format: "%.2f", Double (newproduct.quantity) * newproduct.purchasePrice)
+                        Text(totalpurchaseprice)
+                            .foregroundStyle(Color.gray)
+                    }
+                    
                 }
                 header: {
-                    Text("Purchase Price")
+                    Text("Purchase")
                         .font(.subheadline)
                         .bold()
                 }
                 
                 Section{
-                    TextField("", value: $newproduct.salePrice, format: .number)
-                        .keyboardType(.decimalPad)
+                    HStack{
+                        Text("Unit Price:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.salePrice, format: .number)
+                            .keyboardType(.decimalPad)
+                            
+                    }
+                    HStack{
+                        Text("Total Price:")
+                            .foregroundStyle(Color.gray)
+                        let totalpurchaseprice = String(format: "%.2f", Double (newproduct.quantity) * newproduct.salePrice)
+                        Text(totalpurchaseprice)
+                            .foregroundStyle(Color.gray)
+
+                    }
 
                 }
                 header: {
-                    Text("Sale Price")
+                    Text("Sale")
                         .font(.subheadline)
                         .bold()
                 }
                 
                     
                 Section{
-                    HStack{
-                        Text("Min Quantity:")
-                            .foregroundStyle(Color.gray)
-                        TextField("", value: $newproduct.quantity, format: .number)
-                            .keyboardType(.numberPad)
-                            
-                    }
+                 
                     HStack{
                         Text("Internal Ref:")
                             .foregroundStyle(Color.gray)
@@ -171,7 +206,7 @@ struct EditProduct: View {
                 ToolbarItem(placement: .topBarTrailing){
                     Button(action: {
 //                        newproduct.image = selectedPhotoData
-                        modelContext.insert(newproduct)
+              //          modelContext.insert(newproduct)
                         dismiss()
                     }, label: {
                         Text("Done")

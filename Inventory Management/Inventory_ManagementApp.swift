@@ -15,7 +15,7 @@ struct Inventory_ManagementApp: App {
       
       init() {
           do {
-              modelContainer = try ModelContainer(for: Product.self, Client.self)
+              modelContainer = try ModelContainer(for: Product.self)
           } catch {
               fatalError("Could not initialize ModelContainer")
           }
@@ -28,6 +28,10 @@ struct Inventory_ManagementApp: App {
                 ProductScreen()
                     .tabItem{
                         Label("Inventory", systemImage: "shippingbox.fill")
+                    }
+                TransactionScreen()
+                    .tabItem{
+                        Label("IN/OUt", systemImage: "arrow.left.arrow.right.circle")
                     }
             }
         }

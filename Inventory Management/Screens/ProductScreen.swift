@@ -11,14 +11,19 @@ import SwiftData
 struct ProductScreen: View {
     @Environment(\.modelContext) var modelContext
     @Query var productdata: [Product]
-    
+
     @State private var showAddProduct : Bool = false
+    @State private var searchText = ""
     
+    var filtredproducts: [Product] {
+        guard !searchText.isEmpty else {return productdata}
+        return productdata.filter {$0.name.localizedStandardContains(searchText)}
+    }
     var body: some View {
         NavigationStack{
             VStack{
                 List{
-                    ForEach(productdata){product in
+                    ForEach(filtredproducts){product in
                         NavigationLink(destination: EditProduct(newproduct: product)){
                             
                             HStack{
@@ -76,13 +81,17 @@ struct ProductScreen: View {
                     Image(systemName: "plus")
                 })
             }
+            .searchable(text: $searchText)
             .sheet(isPresented: $showAddProduct, content: {
                 NavigationStack{
                     addProduct()
                 }
             })
+            
         }
         
     }
+    
+
     
 }

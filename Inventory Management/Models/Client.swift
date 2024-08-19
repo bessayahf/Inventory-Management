@@ -18,7 +18,8 @@ class Client{
     var email : String
     var phone : String
     var isSupplier : Bool
-    
+    @Relationship(deleteRule: .noAction) var transactions = [StockTransaction]()
+
     init(name: String = "", address: String = "", city : String = "", zipcode : String = "", email: String = "", phone: String = "", isSupplier : Bool = true) {
         self.uuid = UUID().uuidString
         self.name = name

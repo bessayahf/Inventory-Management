@@ -9,18 +9,19 @@ import Foundation
 import SwiftData
 
 @Model
-class Transaction{
+class StockTransaction{
     var uuid : String
     var date : Date
     var quantity : Int
-    var isOrder : Bool
-    @Relationship(deleteRule : .noAction) var product = Product ()
-    @Relationship(deleteRule : .noAction) var client = Client ()
+    var type : String
+    var product : Product?
+    var client : Client?
+    var notes: String?
     
-    init(date: Date, quantity: Int = 0, isOrder: Bool = true) {
+    init(date: Date = .now, quantity: Int = 0, type: String = "IN") {
         self.uuid = UUID().uuidString
         self.date = date
         self.quantity = quantity
-        self.isOrder = isOrder
+        self.type = type
     }
 }

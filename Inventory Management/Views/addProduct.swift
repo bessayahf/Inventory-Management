@@ -24,14 +24,6 @@ struct addProduct: View {
     var body: some View {
         NavigationStack{
             List{
-                
-//                Section{
-//                    Button(action: {
-//                        selectImageSource.toggle()
-//                    }, label: {
-//                        Label("Add Image", systemImage: "photo")
-//                    })
-//                }
                 Section{
                     if let selectedPhotoData,
                        let uiImage =  UIImage(data: selectedPhotoData){
@@ -56,14 +48,6 @@ struct addProduct: View {
                 .onTapGesture {
                     selectImageSource.toggle()
                 }
-//                Section {
-//                    PhotosPicker(selection: $selectedPhoto,
-//                                 matching: .images,
-//                                 photoLibrary: .shared())
-//                    {
-//                        Label("Add Image", systemImage: "photo")
-//                    }
-//                }
       
                 Section{
                     TextField("Name", text: $newproduct.name)
@@ -83,7 +67,20 @@ struct addProduct: View {
                     .bold()
             }
                 Section{
+                    HStack{
+                        Text("Available:")
+                            .foregroundStyle(Color.gray)
                         TextField("", value: $newproduct.quantity, format: .number)
+                            .keyboardType(.numberPad)
+                            
+                    }
+                    HStack{
+                        Text("Min:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.minquantity, format: .number)
+                            .keyboardType(.numberPad)
+                            
+                    }
                     
                 }
                 header: {
@@ -93,37 +90,57 @@ struct addProduct: View {
                 }
            
                 Section{
-                    TextField(" ", value: $newproduct.purchasePrice, format: .number)
-                        .keyboardType(.decimalPad)
+                    
+                    HStack{
+                        Text("Unit Price:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.purchasePrice, format: .number)
+                            .keyboardType(.decimalPad)
+                            
+                    }
+                    HStack{
+                        Text("Total Price:")
+                            .foregroundStyle(Color.gray)
+                        let totalpurchaseprice = String(format: "%.2f", Double (newproduct.quantity) * newproduct.purchasePrice)
+                        Text(totalpurchaseprice)
+                            .foregroundStyle(Color.gray)
+
+                    }
 
                 }
                 header: {
-                    Text("Purchase Price")
+                    Text("Purchase")
                         .font(.subheadline)
                         .bold()
                 }
                 
                 Section{
-                    TextField("", value: $newproduct.salePrice, format: .number)
-                        .keyboardType(.decimalPad)
+                    HStack{
+                        Text("Unit Price:")
+                            .foregroundStyle(Color.gray)
+                        TextField("", value: $newproduct.salePrice, format: .number)
+                            .keyboardType(.decimalPad)
+                            
+                    }
+                    HStack{
+                        Text("Total Price:")
+                            .foregroundStyle(Color.gray)
+                        let totalpurchaseprice = String(format: "%.2f", Double (newproduct.quantity) * newproduct.salePrice)
+                        Text(totalpurchaseprice)
+                            .foregroundStyle(Color.gray)
+
+                    }
 
                 }
                 header: {
-                    Text("Sale Price")
+                    Text("Sale")
                         .font(.subheadline)
                         .bold()
                 }
                 
                     
                 Section{
-
-                    HStack{
-                        Text("Min Quantity:")
-                            .foregroundStyle(Color.gray)
-                        TextField("", value: $newproduct.quantity, format: .number)
-                            .keyboardType(.numberPad)
-                            
-                    }
+                    
                     HStack{
                         Text("Internal Ref:")
                             .foregroundStyle(Color.gray)
