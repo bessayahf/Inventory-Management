@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723509A62C74A6CB003C7F5B /* ChartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723509A52C74A6CB003C7F5B /* ChartScreen.swift */; };
 		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
 		7257044C2C6F81080012E89D /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257044B2C6F81080012E89D /* EditProduct.swift */; };
 		7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7257044E2C6FBCE80012E89D /* CodeScanner */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		723509A52C74A6CB003C7F5B /* ChartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScreen.swift; sourceTree = "<group>"; };
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
 		725704502C7126940012E89D /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		726FDD432C6D281F004A11AC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				723509A52C74A6CB003C7F5B /* ChartScreen.swift */,
 				726FDD372C6D27EA004A11AC /* ProductScreen.swift */,
 				725704502C7126940012E89D /* TransactionScreen.swift */,
 			);
@@ -196,6 +199,7 @@
 				726FDD382C6D27EA004A11AC /* ProductScreen.swift in Sources */,
 				726FDD4F2C6E04D0004A11AC /* addProduct.swift in Sources */,
 				725704552C720DBF0012E89D /* addTransaction.swift in Sources */,
+				723509A62C74A6CB003C7F5B /* ChartScreen.swift in Sources */,
 				726FDD4C2C6D2F32004A11AC /* StockTransaction.swift in Sources */,
 				7257044C2C6F81080012E89D /* EditProduct.swift in Sources */,
 				725704512C7126940012E89D /* TransactionScreen.swift in Sources */,
@@ -345,6 +349,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,6 +380,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

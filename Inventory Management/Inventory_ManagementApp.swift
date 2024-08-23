@@ -31,7 +31,11 @@ struct Inventory_ManagementApp: App {
                     }
                 TransactionScreen()
                     .tabItem{
-                        Label("IN/OUt", systemImage: "arrow.left.arrow.right.circle")
+                        Label("IN/OUT", systemImage: "arrow.left.arrow.right.circle")
+                    }
+                ChartScreen()
+                    .tabItem{
+                        Label("Chart", systemImage: "chart.bar")
                     }
             }
         }

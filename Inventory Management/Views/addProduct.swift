@@ -157,7 +157,7 @@ struct addProduct: View {
                         TextField("", text: $newproduct.model)
                     }
                     HStack{
-                        Text("Assignement:")
+                        Text("Assignment:")
                             .foregroundStyle(Color.gray)
                         TextField("", text: $newproduct.assignement)
                     }
@@ -201,6 +201,13 @@ struct addProduct: View {
                     Button(action: {
                         newproduct.image = selectedPhotoData
                         modelContext.insert(newproduct)
+                        let newtransaction = StockTransaction()
+                        newtransaction.product=newproduct
+                        newtransaction.quantity=newproduct.quantity
+                        newtransaction.date=Date.now
+                        newtransaction.type="IN"
+                        modelContext.insert(newtransaction)
+                        
                         dismiss()
                     }, label: {
                         Text("Done")
@@ -265,7 +272,11 @@ struct addProduct: View {
                 }
                   
                 }
-            })
+                .presentationDetents([.medium])
+            }
+            )
+            
+
         }
     }
 }

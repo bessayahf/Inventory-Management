@@ -26,7 +26,7 @@ class Product {
     var notes : String
     var customField1 : String
     var customField2 : String
-    @Relationship(deleteRule: .noAction) var transactions = [StockTransaction]()
+    @Relationship(deleteRule: .cascade) var transactions = [StockTransaction]()
     
     init(name: String = "", code: String = "", image: Data? = nil, quantity: Int = 0,
          salePrice: Double  = 0, purchasePrice: Double = 0,

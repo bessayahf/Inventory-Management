@@ -17,6 +17,7 @@ struct addTransaction: View {
     @State private var selectedProduct : String = ""
     @State private var quantity : Int = 0
     @State private var selectedType = "IN"
+    @State private var showingAlert = false
     let operationtype = ["IN", "OUT"]
     
     var body: some View {
@@ -40,7 +41,7 @@ struct addTransaction: View {
                     }
                 }
                 
-                Picker("Operation Type", selection: $selectedType) {
+                Picker("Stock", selection: $selectedType) {
                     ForEach(operationtype, id: \.self){type in
                         Text(type)
                     }
@@ -57,10 +58,13 @@ struct addTransaction: View {
                     else {
                         Text("Quantity OUT :")
                     }
+                  
                     TextField("", value: $quantity, format: .number)
                         .textFieldStyle(.roundedBorder)
                         .keyboardType(.numberPad)
+                        
                 }
+                
                 
             }
             .navigationTitle("New Operation")
@@ -76,22 +80,45 @@ struct addTransaction: View {
                 
                 ToolbarItem(placement: .topBarTrailing){
                     Button {
-                        newtransaction.product = getProductByID(id: selectedProduct)
-                        newtransaction.type = selectedType
-                        newtransaction.quantity = quantity
+                        let currentproduct = getProductByID(id: selectedProduct)
                         if (selectedType == "IN"){
+                            newtransaction.product = currentproduct
+                            newtransaction.type = selectedType
+                            newtransaction.quantity = quantity
                             newtransaction.product?.quantity += quantity
+                            modelContext.insert(newtransaction)
+                            dismiss()
                         }
                         else{
-                            newtransaction.product?.quantity -= quantity
+                            if let availablequantity = currentproduct?.quantity {
+                                if(availablequantity < quantity) {
+                                    showingAlert.toggle()
+                                }
+                                else
+                                {
+                                    newtransaction.product = currentproduct
+                                    newtransaction.type = selectedType
+                                    newtransaction.quantity = quantity
+                                    newtransaction.product?.quantity -= quantity
+                                    modelContext.insert(newtransaction)
+                                    dismiss()
+                                }
+                            }
+                           
+                            
                         }
-                        modelContext.insert(newtransaction)
-                        dismiss()
+                      
+                       
                     }
                     label: {
                         Text("Done")
                         }
                     .disabled(quantity == 0)
+                    .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("Error"),
+                                      message: Text("The available quantity is less than \(quantity)"),
+                                      dismissButton: .default(Text("Got it!")))
+                            }
                     
                 }
             }

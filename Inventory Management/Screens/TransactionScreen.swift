@@ -5,102 +5,245 @@
 //  Created by Faycal Bessayah on 17/08/2024.
 //
 
+//import SwiftUI
+//import SwiftData
+//
+//struct TransactionScreen: View {
+//    @Environment(\.modelContext) var modelContext
+//    @Query var transactiondata: [StockTransaction]
+//    @Query var productdata : [Product]
+//    @State private var showAddTransaction : Bool = false
+//
+//    @State private var searchText = ""
+//
+//    var filtredtransactions: [StockTransaction] {
+//        guard !searchText.isEmpty else {return transactiondata}
+//        return transactiondata.filter {$0.product?.name.localizedStandardContains(searchText) ?? false}
+//    }
+//    
+//    var body: some View {
+//        NavigationStack{
+//            List{
+//                ForEach(filtredtransactions) { transaction in
+//                        HStack{
+//                            
+//                            if let imagedata = transaction.product?.image {
+//                                if let uiImage =  UIImage(data: imagedata){
+//                                    Image(uiImage:uiImage)
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 50 , height: 50)
+//                                }
+//                                
+//                            }
+//                            else {
+//                                Image("placeholder-image")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(width: 50 , height: 50)
+//                            }
+//                            
+//                            if let product = transaction.product{
+//                                VStack(alignment: .leading){
+//                                    Text(product.name)
+//                                        .font(.headline)
+//                                 //   Text(product.code)
+//                                  //      .font(.caption)
+//                                    Text(transaction.date.formatted(date:.numeric, time: .omitted))
+//                                        .foregroundStyle(Color.purple)
+//                                        .font(.caption)
+//                                }
+//                                
+//                            }
+//                                   
+//                          
+//                              
+//                            
+//                            Spacer()
+//                            if(transaction.type == "IN"){
+//                                Text("+ \(transaction.quantity)")
+//                                    .foregroundStyle(Color.green)
+//                            }
+//                            else{
+//                                Text("- \(transaction.quantity)")
+//                                    .foregroundStyle(Color.red)
+//
+//                            }
+//                        }
+//                
+//                    
+//                }
+//                .onDelete(perform: {indexSet in
+//                    for index in indexSet {
+//                        let transtodelete = transactiondata[index]
+//                        modelContext.delete(transtodelete)
+//                    }
+//                })
+//            }
+//            .navigationTitle("Operations")
+//            .toolbar{
+//                
+//                ToolbarItem(placement: .topBarTrailing){
+//                    Button {
+//                        showAddTransaction.toggle()
+//                        
+//                    }
+//                    label: {
+//                            Image(systemName: "plus")
+//                    }
+//                    .disabled(productdata.count == 0)
+//                    
+//                }
+//                
+//
+//            }
+//            .searchable(text: $searchText, prompt: "Search Products")
+//            .sheet(isPresented: $showAddTransaction){
+//                NavigationStack{
+//                    addTransaction()
+//                }
+//                .presentationDetents([.medium])
+//            }
+//            
+//        }
+//    }
+//}
+
+
 import SwiftUI
 import SwiftData
 
 struct TransactionScreen: View {
     @Environment(\.modelContext) var modelContext
     @Query var transactiondata: [StockTransaction]
-    @Query var productdata : [Product]
-    @State private var showAddTransaction : Bool = false
-   // var newtransaction : StockTransaction = StockTransaction()
-    
+    @Query var productdata: [Product]
+    @State private var showAddTransaction: Bool = false
     @State private var searchText = ""
 
-    var filtredtransactions: [StockTransaction] {
-        guard !searchText.isEmpty else {return transactiondata}
-        return transactiondata.filter {$0.product?.name.localizedStandardContains(searchText) ?? true}
-    }
+    // State for CSV export
+//    @State private var csvURL: URL? = nil
     
+    var filtredtransactions: [StockTransaction] {
+        guard !searchText.isEmpty else { return transactiondata }
+        return transactiondata.filter { $0.product?.name.localizedStandardContains(searchText) ?? false }
+    }
+
     var body: some View {
-        NavigationStack{
-            List{
-                ForEach(filtredtransactions) { transaction in
-                        HStack{
-                            
-                            if let imagedata = transaction.product?.image {
-                                if let uiImage =  UIImage(data: imagedata){
-                                    Image(uiImage:uiImage)
+        NavigationStack {
+            VStack{
+                if(!productdata.isEmpty)
+                {
+                    List {
+                        ForEach(filtredtransactions) { transaction in
+                            HStack {
+                                if let imagedata = transaction.product?.image, let uiImage = UIImage(data: imagedata) {
+                                    Image(uiImage: uiImage)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 50 , height: 50)
+                                        .frame(width: 50, height: 50)
+                                } else {
+                                    Image("placeholder-image")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 50)
                                 }
-                                
-                            }
-                            else {
-                                Image("placeholder-image")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50 , height: 50)
-                            }
-                            
-                            if let product = transaction.product{
-                                VStack(alignment: .leading){
-                                    Text(product.name)
-                                        .font(.headline)
-                                 //   Text(product.code)
-                                  //      .font(.caption)
-                                    Text(transaction.date.formatted(date:.numeric, time: .omitted))
-                                        .foregroundStyle(Color.purple)
-                                        .font(.caption)
-                                }
-                                
-                            }
-                                   
-                          
-                              
-                            
-                            Spacer()
-                            if(transaction.type == "IN"){
-                                Text("+ \(transaction.quantity)")
-                                    .foregroundStyle(Color.green)
-                            }
-                            else{
-                                Text("- \(transaction.quantity)")
-                                    .foregroundStyle(Color.red)
 
+                                if let product = transaction.product {
+                                    VStack(alignment: .leading) {
+                                        Text(product.name)
+                                            .font(.headline)
+                                        Text(transaction.date.formatted(date: .abbreviated , time: .omitted))
+                                            .foregroundStyle(Color.purple)
+                                            .font(.caption)
+                                    }
+                                }
+
+                                Spacer()
+                                if transaction.type == "IN" {
+                                    Text("+ \(transaction.quantity)")
+                                        .foregroundStyle(Color.green)
+                                } else {
+                                    Text("- \(transaction.quantity)")
+                                        .foregroundStyle(Color.red)
+                                }
                             }
                         }
-                
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let transtodelete = transactiondata[index]
+                                modelContext.delete(transtodelete)
+                            }
+                        }
+                    }
+                    .searchable(text: $searchText, prompt: "Search Products")
+
                     
                 }
-                .onDelete(perform: {indexSet in
-                    for index in indexSet {
-                        let transtodelete = transactiondata[index]
-                        modelContext.delete(transtodelete)
-                    }
-                })
+                else{
+                    Text("Your inventory is empty!\nBegin by adding products to get started.")
+                         .multilineTextAlignment(.center)
+                         .padding()
+
+                }
             }
-            .sheet(isPresented: $showAddTransaction){
-                NavigationStack{
+            .navigationTitle("Stock IN/OUT")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    if(!productdata.isEmpty){
+                        ShareLink("Export CSV", item: exportCSV())
+
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAddTransaction.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .disabled(productdata.count == 0)
+                }
+            }
+            .sheet(isPresented: $showAddTransaction) {
+                NavigationStack {
                     addTransaction()
                 }
                 .presentationDetents([.medium])
             }
-            .navigationTitle("Operations")
-            .toolbar{
-                Button {
-                    showAddTransaction.toggle()
-                    
-                }
-                label: {
-                        Image(systemName: "plus")
-                }
-                .disabled(productdata.count == 0)
+        }
+    }
+
+    // Create CSV String
+    func createCSV() -> String {
+        var csvString = "Date,Product Name,Product Code, Stock IN/OUT,Quantity\n"
+        for transaction in filtredtransactions {
+            if let productName = transaction.product?.name {
+                let productCode = transaction.product?.code ?? ""
+                let dateString = transaction.date.formatted(date: .numeric, time: .omitted)
+                let typeString = transaction.type
+                let quantityString = String(transaction.quantity)
+                let row = "\(dateString),\(productName),\(productCode),\(typeString),\(quantityString)\n"
+                csvString += row
             }
-            .searchable(text: $searchText)
-            
+        }
+        return csvString
+    }
+
+    // Export and Share CSV File
+    func exportCSV() -> URL {
+        let csvString = createCSV()
+
+        // Save CSV string to a temporary file
+        let fileManager = FileManager.default
+        let tempDirectory = fileManager.temporaryDirectory
+        let fileURL = tempDirectory.appendingPathComponent("IN-OUT-Operations-\(Date.now.formatted(date: .abbreviated, time: .omitted)).csv")
+
+        do {
+            try csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+            return fileURL
+        } catch {
+            print("Failed to write CSV file: \(error)")
+            return fileURL
         }
     }
 }
-

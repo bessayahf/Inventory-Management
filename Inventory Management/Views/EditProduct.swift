@@ -78,12 +78,19 @@ struct EditProduct: View {
             }
                 Section{
                    
-                    HStack{
-                        Text("Available:")
+                    VStack{
+                        HStack{
+                            Text("Available:")
+                                .foregroundStyle(Color.gray)
+                            TextField("", value: $newproduct.quantity, format: .number)
+                                .foregroundStyle(Color.gray)
+                                .keyboardType(.numberPad)
+                                .disabled(true)
+                                
+                        }
+                        Text("To update the product quantity, go to the IN/OUT tab and create a new operation.")
                             .foregroundStyle(Color.gray)
-                        TextField("", value: $newproduct.quantity, format: .number)
-                            .keyboardType(.numberPad)
-                            
+
                     }
                     HStack{
                         Text("Min:")
@@ -166,7 +173,7 @@ struct EditProduct: View {
                         TextField("", text: $newproduct.model)
                     }
                     HStack{
-                        Text("Assignement:")
+                        Text("Assignment:")
                             .foregroundStyle(Color.gray)
                         TextField("", text: $newproduct.assignement)
                     }
@@ -271,7 +278,10 @@ struct EditProduct: View {
                 }
                   
                 }
+                .presentationDetents([.medium])
             })
+           
+
         }
     }
     
