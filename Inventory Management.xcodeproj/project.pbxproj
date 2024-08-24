@@ -30,6 +30,7 @@
 /* Begin PBXFileReference section */
 		723509A52C74A6CB003C7F5B /* ChartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScreen.swift; sourceTree = "<group>"; };
 		723509AF2C79E8F8003C7F5B /* userstate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userstate.swift; sourceTree = "<group>"; };
+		723509B92C7A1591003C7F5B /* Inventory-Management-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Inventory-Management-Info.plist"; sourceTree = SOURCE_ROOT; };
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
 		725704502C7126940012E89D /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		726FDD342C6D27EA004A11AC /* Inventory Management */ = {
 			isa = PBXGroup;
 			children = (
+				723509B92C7A1591003C7F5B /* Inventory-Management-Info.plist */,
 				726FDD4D2C6E04BA004A11AC /* Views */,
 				726FDD442C6D2832004A11AC /* Models */,
 				726FDD432C6D281F004A11AC /* Screens */,
@@ -357,6 +359,8 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Inventory-Management-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -389,6 +393,8 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Inventory-Management-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

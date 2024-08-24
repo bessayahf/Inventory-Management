@@ -248,19 +248,21 @@ struct addProduct: View {
                    
                         
                         Button{
+                            selectImageSource=false
                             showCamera.toggle()
                             
                         }
                         label: {
                         Text("Open Camera")
                         }
-                        .fullScreenCover(isPresented: $showCamera) {
-                                accessCameraView(selectedImage: $selectedPhotoData)
-                                .onDisappear(){
-                                    selectImageSource.toggle()
-                                }
-                            
-                            }
+   
+//                        .fullScreenCover(isPresented: $showCamera) {
+//                                accessCameraView(selectedImage: $selectedPhotoData)
+//                                .onDisappear(){
+//                                    selectImageSource.toggle()
+//                                }
+//                            
+//                            }
                         Button{
                             selectedPhotoData = nil
                             selectImageSource.toggle()
@@ -275,9 +277,15 @@ struct addProduct: View {
                 .presentationDetents([.medium])
             }
             )
+            .sheet(isPresented: $showCamera) {
+               
+                accessCameraView(sourceType: .camera, selectedImageData: $selectedPhotoData)
+                   
+                }
             
 
         }
     }
+    
 }
 
