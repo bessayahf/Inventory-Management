@@ -7,13 +7,19 @@
 
 import SwiftUI
 import SwiftData
+import RevenueCat
 
 @main
 struct Inventory_ManagementApp: App {
+    @StateObject var userstate = userState()
+
     
     let modelContainer: ModelContainer
       
       init() {
+          Purchases.logLevel = .debug
+          Purchases.configure(withAPIKey: "appl_VjrSPYzmdEAlGBcTYsSrMtRsGIH")
+          
           do {
               modelContainer = try ModelContainer(for: Product.self)
           } catch {
@@ -26,14 +32,17 @@ struct Inventory_ManagementApp: App {
         WindowGroup {
             TabView{
                 ProductScreen()
+                    .environmentObject(userstate)
                     .tabItem{
                         Label("Inventory", systemImage: "shippingbox.fill")
                     }
                 TransactionScreen()
+                    .environmentObject(userstate)
                     .tabItem{
                         Label("IN/OUT", systemImage: "arrow.left.arrow.right.circle")
                     }
                 ChartScreen()
+                    .environmentObject(userstate)
                     .tabItem{
                         Label("Chart", systemImage: "chart.bar")
                     }

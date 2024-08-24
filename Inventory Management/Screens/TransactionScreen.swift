@@ -112,13 +112,20 @@
 
 import SwiftUI
 import SwiftData
+import RevenueCat
+import RevenueCatUI
 
 struct TransactionScreen: View {
     @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
+
+    @EnvironmentObject var userinfo: userState
+
     @Query var transactiondata: [StockTransaction]
     @Query var productdata: [Product]
     @State private var showAddTransaction: Bool = false
     @State private var searchText = ""
+    @State private var showPaywall = false
 
     // State for CSV export
 //    @State private var csvURL: URL? = nil
@@ -190,7 +197,18 @@ struct TransactionScreen: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     if(!productdata.isEmpty){
-                        ShareLink("Export CSV", item: exportCSV())
+                        if(userinfo.ispro){
+                            ShareLink("Export CSV", item: exportCSV())
+
+                        }
+                        else{
+                            Button{
+                                showPaywall.toggle()
+                            }
+                        label:{
+                            Image(systemName: "square.and.arrow.up")
+                            }
+                        }
 
                     }
                 }
@@ -210,6 +228,36 @@ struct TransactionScreen: View {
                 }
                 .presentationDetents([.medium])
             }
+        }
+        .sheet(isPresented: $showPaywall) {
+            NavigationStack{
+                PaywallView()
+                    .onPurchaseCompleted { customerInfo in
+                        if customerInfo.entitlements["Premium"]?.isActive == true {
+                          // Unlock that great "pro" content
+                            userinfo.ispro = true
+                        }
+                        else {
+                            userinfo.ispro = false
+                        }
+                    }
+                    .toolbar{
+                        Button{
+                            showPaywall.toggle()
+                        }
+                    label:{
+                            Image(systemName: "xmark")
+                            .foregroundColor(Color.white)
+                    }
+                    }
+            }
+           
+                
+            
+            
+        }
+        .onAppear(){
+            checkCustomerInfo()
         }
     }
 
@@ -246,4 +294,21 @@ struct TransactionScreen: View {
             return fileURL
         }
     }
+    
+    func checkCustomerInfo(){
+        // Check RevenueCat user info
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            // access latest customerInfo
+            if customerInfo?.entitlements["Premium"]?.isActive == true {
+            // Unlock that great "pro" content
+                userinfo.ispro = true
+                }
+                else {
+                userinfo.ispro = false
+                }
+     
+            
+            }
+    }
+    
 }

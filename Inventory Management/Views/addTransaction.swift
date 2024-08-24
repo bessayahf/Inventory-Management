@@ -36,8 +36,10 @@ struct addTransaction: View {
                 if let currentproduct = getProductByID(id: selectedProduct){
                     HStack{
                         Text("Available Quantity")
+                            .foregroundStyle(Color.gray)
                         Spacer()
                         Text("\(currentproduct.quantity)")
+                            .foregroundStyle(Color.gray)
                     }
                 }
                 

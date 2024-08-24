@@ -209,6 +209,8 @@ import Charts
 struct ChartScreen: View {
     @Query var productdata: [Product]
     @Query var transactiondata: [StockTransaction]
+    @EnvironmentObject var userinfo: userState
+
     
     @State private var selectedProduct: Product? = nil
     @State private var startDate: Date = Calendar.current.date(byAdding: .month, value: -1, to: Date())!

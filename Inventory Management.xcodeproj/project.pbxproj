@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		723509A62C74A6CB003C7F5B /* ChartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723509A52C74A6CB003C7F5B /* ChartScreen.swift */; };
+		723509B02C79E8F8003C7F5B /* userstate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723509AF2C79E8F8003C7F5B /* userstate.swift */; };
+		723509B42C79EC52003C7F5B /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B32C79EC52003C7F5B /* ReceiptParser */; };
+		723509B62C79EC52003C7F5B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B52C79EC52003C7F5B /* RevenueCat */; };
+		723509B82C79EC52003C7F5B /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B72C79EC52003C7F5B /* RevenueCatUI */; };
 		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
 		7257044C2C6F81080012E89D /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257044B2C6F81080012E89D /* EditProduct.swift */; };
 		7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7257044E2C6FBCE80012E89D /* CodeScanner */; };
@@ -25,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		723509A52C74A6CB003C7F5B /* ChartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScreen.swift; sourceTree = "<group>"; };
+		723509AF2C79E8F8003C7F5B /* userstate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userstate.swift; sourceTree = "<group>"; };
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
 		725704502C7126940012E89D /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
@@ -45,7 +50,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723509B82C79EC52003C7F5B /* RevenueCatUI in Frameworks */,
+				723509B42C79EC52003C7F5B /* ReceiptParser in Frameworks */,
 				7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */,
+				723509B62C79EC52003C7F5B /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +113,7 @@
 				726FDD452C6D284C004A11AC /* Product.swift */,
 				726FDD472C6D2D5A004A11AC /* Client.swift */,
 				726FDD4B2C6D2F32004A11AC /* StockTransaction.swift */,
+				723509AF2C79E8F8003C7F5B /* userstate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +147,9 @@
 			name = "Inventory Management";
 			packageProductDependencies = (
 				7257044E2C6FBCE80012E89D /* CodeScanner */,
+				723509B32C79EC52003C7F5B /* ReceiptParser */,
+				723509B52C79EC52003C7F5B /* RevenueCat */,
+				723509B72C79EC52003C7F5B /* RevenueCatUI */,
 			);
 			productName = "Inventory Management";
 			productReference = 726FDD322C6D27EA004A11AC /* Inventory Management.app */;
@@ -169,6 +181,7 @@
 			mainGroup = 726FDD292C6D27EA004A11AC;
 			packageReferences = (
 				7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				723509B22C79EC52003C7F5B /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = 726FDD332C6D27EA004A11AC /* Products */;
 			projectDirPath = "";
@@ -206,6 +219,7 @@
 				726FDD482C6D2D5A004A11AC /* Client.swift in Sources */,
 				726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */,
 				726FDD462C6D284C004A11AC /* Product.swift in Sources */,
+				723509B02C79E8F8003C7F5B /* userstate.swift in Sources */,
 				7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +357,7 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -354,8 +369,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.habittracker.Inventory-Management";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.Inventory-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -374,6 +389,7 @@
 				DEVELOPMENT_TEAM = 5DLMWUFRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -385,8 +401,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.habittracker.Inventory-Management";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.Inventory-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -418,6 +434,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		723509B22C79EC52003C7F5B /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
 		7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -429,6 +453,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		723509B32C79EC52003C7F5B /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723509B22C79EC52003C7F5B /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = ReceiptParser;
+		};
+		723509B52C79EC52003C7F5B /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723509B22C79EC52003C7F5B /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		723509B72C79EC52003C7F5B /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723509B22C79EC52003C7F5B /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
 		7257044E2C6FBCE80012E89D /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7257044D2C6FBCE80012E89D /* XCRemoteSwiftPackageReference "CodeScanner" */;
