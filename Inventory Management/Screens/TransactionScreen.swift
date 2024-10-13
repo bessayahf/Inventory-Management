@@ -1,114 +1,3 @@
-//
-//  TransactionScreen.swift
-//  Inventory Management
-//
-//  Created by Faycal Bessayah on 17/08/2024.
-//
-
-//import SwiftUI
-//import SwiftData
-//
-//struct TransactionScreen: View {
-//    @Environment(\.modelContext) var modelContext
-//    @Query var transactiondata: [StockTransaction]
-//    @Query var productdata : [Product]
-//    @State private var showAddTransaction : Bool = false
-//
-//    @State private var searchText = ""
-//
-//    var filtredtransactions: [StockTransaction] {
-//        guard !searchText.isEmpty else {return transactiondata}
-//        return transactiondata.filter {$0.product?.name.localizedStandardContains(searchText) ?? false}
-//    }
-//    
-//    var body: some View {
-//        NavigationStack{
-//            List{
-//                ForEach(filtredtransactions) { transaction in
-//                        HStack{
-//                            
-//                            if let imagedata = transaction.product?.image {
-//                                if let uiImage =  UIImage(data: imagedata){
-//                                    Image(uiImage:uiImage)
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .frame(width: 50 , height: 50)
-//                                }
-//                                
-//                            }
-//                            else {
-//                                Image("placeholder-image")
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(width: 50 , height: 50)
-//                            }
-//                            
-//                            if let product = transaction.product{
-//                                VStack(alignment: .leading){
-//                                    Text(product.name)
-//                                        .font(.headline)
-//                                 //   Text(product.code)
-//                                  //      .font(.caption)
-//                                    Text(transaction.date.formatted(date:.numeric, time: .omitted))
-//                                        .foregroundStyle(Color.purple)
-//                                        .font(.caption)
-//                                }
-//                                
-//                            }
-//                                   
-//                          
-//                              
-//                            
-//                            Spacer()
-//                            if(transaction.type == "IN"){
-//                                Text("+ \(transaction.quantity)")
-//                                    .foregroundStyle(Color.green)
-//                            }
-//                            else{
-//                                Text("- \(transaction.quantity)")
-//                                    .foregroundStyle(Color.red)
-//
-//                            }
-//                        }
-//                
-//                    
-//                }
-//                .onDelete(perform: {indexSet in
-//                    for index in indexSet {
-//                        let transtodelete = transactiondata[index]
-//                        modelContext.delete(transtodelete)
-//                    }
-//                })
-//            }
-//            .navigationTitle("Operations")
-//            .toolbar{
-//                
-//                ToolbarItem(placement: .topBarTrailing){
-//                    Button {
-//                        showAddTransaction.toggle()
-//                        
-//                    }
-//                    label: {
-//                            Image(systemName: "plus")
-//                    }
-//                    .disabled(productdata.count == 0)
-//                    
-//                }
-//                
-//
-//            }
-//            .searchable(text: $searchText, prompt: "Search Products")
-//            .sheet(isPresented: $showAddTransaction){
-//                NavigationStack{
-//                    addTransaction()
-//                }
-//                .presentationDetents([.medium])
-//            }
-//            
-//        }
-//    }
-//}
-
 
 import SwiftUI
 import SwiftData
@@ -126,12 +15,13 @@ struct TransactionScreen: View {
     @State private var showAddTransaction: Bool = false
     @State private var searchText = ""
     @State private var showPaywall = false
+    @State private var isAscending: Bool = true // State for sorting order
 
     // State for CSV export
 //    @State private var csvURL: URL? = nil
     
     var filtredtransactions: [StockTransaction] {
-        guard !searchText.isEmpty else { return transactiondata }
+        guard !searchText.isEmpty else { return isAscending ? transactiondata : transactiondata.reversed() }
         return transactiondata.filter { $0.product?.name.localizedStandardContains(searchText) ?? false }
     }
 
@@ -141,7 +31,7 @@ struct TransactionScreen: View {
                 if(!productdata.isEmpty)
                 {
                     List {
-                        ForEach(filtredtransactions) { transaction in
+                        ForEach(filtredtransactions.reversed()) { transaction in
                             HStack {
                                 if let imagedata = transaction.product?.image, let uiImage = UIImage(data: imagedata) {
                                     Image(uiImage: uiImage)
@@ -214,12 +104,29 @@ struct TransactionScreen: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showAddTransaction.toggle()
-                    } label: {
-                        Image(systemName: "plus")
+                    HStack{
+                        Button {
+                            showAddTransaction.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .disabled(productdata.count == 0)
+                        
+                        Button(action: {
+                            isAscending.toggle() // Toggle sorting direction
+                        }) {
+                            // Conditional Image based on isAscending
+                           
+                                isAscending ?
+                            AnyView(Image(systemName: "arrow.up.arrow.down.circle") )
+                                :
+                            AnyView( Image(systemName: "arrow.up.arrow.down.circle")
+                                    .rotationEffect(.degrees(180))
+                                    .scaleEffect(x: -1, y: 1))
+                            
+                        }
                     }
-                    .disabled(productdata.count == 0)
+
                 }
             }
             .sheet(isPresented: $showAddTransaction) {
@@ -264,7 +171,7 @@ struct TransactionScreen: View {
     // Create CSV String
     func createCSV() -> String {
         var csvString = "Date,Product Name,Product Code, Stock IN/OUT,Quantity\n"
-        for transaction in filtredtransactions {
+        for transaction in transactiondata {
             if let productName = transaction.product?.name {
                 let productCode = transaction.product?.code ?? ""
                 let dateString = transaction.date.formatted(date: .numeric, time: .omitted)
@@ -312,3 +219,4 @@ struct TransactionScreen: View {
     }
     
 }
+

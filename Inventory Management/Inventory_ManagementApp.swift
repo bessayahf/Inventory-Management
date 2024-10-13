@@ -39,7 +39,7 @@ struct Inventory_ManagementApp: App {
                 TransactionScreen()
                     .environmentObject(userstate)
                     .tabItem{
-                        Label("IN/OUT", systemImage: "arrow.left.arrow.right.circle")
+                        Label("IN/OUT", systemImage: "arrow.up.arrow.down.circle.fill")
                     }
                 ChartScreen()
                     .environmentObject(userstate)

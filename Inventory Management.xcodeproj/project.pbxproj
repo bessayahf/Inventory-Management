@@ -12,6 +12,7 @@
 		723509B42C79EC52003C7F5B /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B32C79EC52003C7F5B /* ReceiptParser */; };
 		723509B62C79EC52003C7F5B /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B52C79EC52003C7F5B /* RevenueCat */; };
 		723509B82C79EC52003C7F5B /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 723509B72C79EC52003C7F5B /* RevenueCatUI */; };
+		724B40902CBBD19F00FC368D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B408F2CBBD19B00FC368D /* Date.swift */; };
 		7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725704492C6E7EA10012E89D /* accessCameraView.swift */; };
 		7257044C2C6F81080012E89D /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257044B2C6F81080012E89D /* EditProduct.swift */; };
 		7257044F2C6FBCE80012E89D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 7257044E2C6FBCE80012E89D /* CodeScanner */; };
@@ -31,6 +32,7 @@
 		723509A52C74A6CB003C7F5B /* ChartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScreen.swift; sourceTree = "<group>"; };
 		723509AF2C79E8F8003C7F5B /* userstate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userstate.swift; sourceTree = "<group>"; };
 		723509B92C7A1591003C7F5B /* Inventory-Management-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Inventory-Management-Info.plist"; sourceTree = SOURCE_ROOT; };
+		724B408F2CBBD19B00FC368D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		725704492C6E7EA10012E89D /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
 		7257044B2C6F81080012E89D /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
 		725704502C7126940012E89D /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		724B408E2CBBD18F00FC368D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				724B408F2CBBD19B00FC368D /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		726FDD292C6D27EA004A11AC = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				723509B92C7A1591003C7F5B /* Inventory-Management-Info.plist */,
+				724B408E2CBBD18F00FC368D /* Extensions */,
 				726FDD4D2C6E04BA004A11AC /* Views */,
 				726FDD442C6D2832004A11AC /* Models */,
 				726FDD432C6D281F004A11AC /* Screens */,
@@ -222,6 +233,7 @@
 				726FDD362C6D27EA004A11AC /* Inventory_ManagementApp.swift in Sources */,
 				726FDD462C6D284C004A11AC /* Product.swift in Sources */,
 				723509B02C79E8F8003C7F5B /* userstate.swift in Sources */,
+				724B40902CBBD19F00FC368D /* Date.swift in Sources */,
 				7257044A2C6E7EA10012E89D /* accessCameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,7 +385,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.Inventory-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -407,7 +419,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.myiosapp.Inventory-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
