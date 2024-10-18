@@ -17,11 +17,11 @@ struct TransactionScreen: View {
     @State private var showPaywall = false
     @State private var isAscending: Bool = true // State for sorting order
 
-    // State for CSV export
-//    @State private var csvURL: URL? = nil
+
     
     var filtredtransactions: [StockTransaction] {
-        guard !searchText.isEmpty else { return isAscending ? transactiondata : transactiondata.reversed() }
+//        guard !searchText.isEmpty else { return isAscending ? transactiondata : transactiondata.reversed() }
+        guard !searchText.isEmpty else { return transactiondata}
         return transactiondata.filter { $0.product?.name.localizedStandardContains(searchText) ?? false }
     }
 
@@ -31,7 +31,7 @@ struct TransactionScreen: View {
                 if(!productdata.isEmpty)
                 {
                     List {
-                        ForEach(filtredtransactions.reversed()) { transaction in
+                        ForEach(filtredtransactions) { transaction in
                             HStack {
                                 if let imagedata = transaction.product?.image, let uiImage = UIImage(data: imagedata) {
                                     Image(uiImage: uiImage)
@@ -65,6 +65,14 @@ struct TransactionScreen: View {
                                 }
                             }
                         }
+//                        .onDelete(perform: { index in
+//                            // get the item from the reversed list
+//                            let theItem = filtredtransactions[index.first!]
+//                            // get the index of the item from the viewModel, and remove it
+//                            if let ndx = transactiondata.firstIndex(of: theItem) {
+//                                modelContext.delete(transactiondata[ndx])
+//                            }
+//                        })
                         .onDelete { indexSet in
                             for index in indexSet {
                                 let transtodelete = transactiondata[index]
@@ -112,19 +120,19 @@ struct TransactionScreen: View {
                         }
                         .disabled(productdata.count == 0)
                         
-                        Button(action: {
-                            isAscending.toggle() // Toggle sorting direction
-                        }) {
-                            // Conditional Image based on isAscending
-                           
-                                isAscending ?
-                            AnyView(Image(systemName: "arrow.up.arrow.down.circle") )
-                                :
-                            AnyView( Image(systemName: "arrow.up.arrow.down.circle")
-                                    .rotationEffect(.degrees(180))
-                                    .scaleEffect(x: -1, y: 1))
-                            
-                        }
+//                        Button(action: {
+//                            isAscending.toggle() // Toggle sorting direction
+//                        }) {
+//                            // Conditional Image based on isAscending
+//                           
+//                                isAscending ?
+//                            AnyView(Image(systemName: "arrow.up.arrow.down.circle") )
+//                                :
+//                            AnyView( Image(systemName: "arrow.up.arrow.down.circle")
+//                                    .rotationEffect(.degrees(180))
+//                                    .scaleEffect(x: -1, y: 1))
+//                            
+//                        }
                     }
 
                 }
